@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Needhelp.AI</title>
+    <!-- Bootstrap 5.3.3 + Font Awesome 6 + consistent theme -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* additional micro adjustments to match dashboard exactly */
+        body {
+            background: #f8f8f8;
+        }
+        .code-block {
+            background: #f1f3f5;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            white-space: pre-wrap;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        .copy-btn-icon {
+            transition: all 0.2s ease;
+        }
+        .business-id-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .embed-header-icon {
+            background: #000000;
+            color: white;
+            border-radius: 1rem;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body style="background: #f8f8f8;">
+
+    <!-- NAVBAR (exactly same style as dashboard: light bg, border-bottom, dropdown) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="/dashboard">
+                <span class="fs-3 me-2"></span>
+                Needhelp.AI
+            </a>
+            
+            <div class="d-flex align-items-center gap-3">
+                <!-- Dashboard link (consistent with original embed but modern style) -->
+                <a href="/dashboard" class="btn btn-outline-dark btn-sm d-none d-md-inline-flex align-items-center gap-2">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>Dashboard</span>
+                </a>
+                
+                <!-- User dropdown (same as dashboard) -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-dark dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span id="userEmail" class="d-none d-md-inline"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT (container with py-5 matching dashboard spacing) -->
+    <div class="container py-5">
+        <!-- header section with icon & title (like dashboard page) -->
+        <div class="d-flex flex-wrap justify-content-between align-items-end mb-5">
+            <div>
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="embed-header-icon shadow-sm">
+                        <i class="fa-solid fa-code fa-2x"></i>
+                    </div>
+                    <div>
+                        <h1 class="display-5 fw-bold text-black mb-1">Embed Widget</h1>
+                        <p class="text-muted lead m-0">Add your AI Support Bot to any website in seconds</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 mt-md-0">
+                <a href="/knowledge" class="btn btn-outline-dark px-4 py-2">
+                    <i class="fa-solid fa-brain me-2"></i> Knowledge Base
+                </a>
+            </div>
+        </div>
+
+        <!-- Main card: embed instructions -->
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+            <div class="card-body p-4 p-lg-5">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="bg-black text-white rounded-3 p-3">
+                        <i class="fa-solid fa-puzzle-piece fa-2x"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-semibold text-black mb-1">One‑line integration</h4>
+                        <p class="text-muted mb-0">Copy and paste this code right before the closing <code class="bg-light px-1">&lt;/body&gt;</code> tag of your website.</p>
+                    </div>
+                </div>
+
+                <!-- Code block with copy button (modern style) -->
+                <div class="code-block mb-4">
+                    <code id="embedCode" style="font-size: 0.9rem; word-break: break-all;"></code>
+                </div>
+                
+                <div class="d-flex justify-content-end">
+                    <button id="copyCodeBtn" class="btn btn-dark px-4 py-2 rounded-pill d-flex align-items-center gap-2">
+                        <i class="fa-regular fa-clipboard"></i> 
+                        <span>Copy embed code</span>
+                    </button>
+                </div>
+                
+                <div class="alert alert-info mt-4 d-flex align-items-start gap-3 border-0 bg-light rounded-4" role="alert">
+                    <i class="fa-solid fa-circle-info fa-lg mt-1 text-dark"></i>
+                    <div class="small">
+                        <strong>💡 Pro tip:</strong> The widget automatically adapts to your website’s theme (light/dark mode). After embedding, wait ~10 seconds for the AI to become active.  
+                        Replace <code class="bg-white px-1">YOUR_BUSINESS_ID</code> ? — Don't worry, the code below already includes your unique ID.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business ID card + additional info -->
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card business-id-card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <i class="fa-solid fa-fingerprint fa-2x text-dark"></i>
+                            <h5 class="fw-bold text-black mb-0">Your Business ID</h5>
+                        </div>
+                        <p class="text-muted small mb-2">This unique identifier connects your website to the AI training data. It's automatically included in the embed code above.</p>
+                        <div class="bg-light p-3 rounded-3 border">
+                            <code id="businessId" class="text-dark fw-semibold" style="word-break: break-all;"></code>
+                        </div>
+                        <div class="mt-3 text-muted small">
+                            <i class="fa-regular fa-copy me-1"></i> You can also manually use this ID in advanced integrations.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card business-id-card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <i class="fa-solid fa-chat-dots fa-2x text-dark"></i>
+                            <h5 class="fw-bold text-black mb-0">Need help?</h5>
+                        </div>
+                        <p class="text-muted">Your AI bot will answer customer questions 24/7 based on the knowledge you provide in the <strong>Knowledge Base</strong> section.</p>
+                        <hr class="my-3">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="/knowledge" class="btn btn-outline-dark btn-sm"><i class="fa-solid fa-book-open"></i> Manage docs</a>
+                            <a href="/tickets" class="btn btn-outline-dark btn-sm"><i class="fa-solid fa-ticket"></i> View tickets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status bar (exactly same as dashboard footer) -->
+        <div class="mt-5 pt-4 border-top text-center text-muted small">
+            <i class="fa-solid fa-check-circle text-success me-1"></i>
+            Your AI bot is currently <strong class="text-black">FREE in Beta</strong> • 
+            Paid plans (₦10,000/mo or ₦100,000/yr) coming soon
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    
+    <!-- Bootstrap JS (for dropdowns & toggles) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script>
+        // Firebase configuration (identical to dashboard)
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8QXAM2cEySKJuhVPobuEH7nzSX8xyULA",
+            authDomain: "observer-d8ad4.firebaseapp.com",
+            databaseURL: "https://observer-d8ad4-default-rtdb.firebaseio.com",
+            projectId: "observer-d8ad4",
+            storageBucket: "observer-d8ad4.firebasestorage.app",
+            messagingSenderId: "502571433434",
+            appId: "1:502571433434:web:313b0635ad9706e18ed4e3",
+            measurementId: "G-CXFDB13376"
+        };
+        firebase.initializeApp(firebaseConfig);
+        
+        // DOM elements
+        const userEmailSpan = document.getElementById('userEmail');
+        const businessIdSpan = document.getElementById('businessId');
+        const embedCodeSpan = document.getElementById('embedCode');
+        const copyBtn = document.getElementById('copyCodeBtn');
+        
+        // Authentication state + render embed code & business ID
+        firebase.auth().onAuthStateChanged(async (user) => {
+            if (!user) {
+                // Not logged in → redirect to login page (matching original behaviour)
+                window.location.href = '/login';
+                return;
+            }
+            
+            // 1. Display user email in navbar dropdown
+            if (user.email) {
+                userEmailSpan.textContent = user.email;
+            } else {
+                userEmailSpan.textContent = user.displayName || 'Account';
+            }
+            
+            // 2. Business ID = Firebase UID
+            const businessId = user.uid;
+            businessIdSpan.textContent = businessId;
+            
+            // 3. Build widget embed URL: points to /widget.js?businessId=xxx
+            //    Using window.location.origin ensures it works in any environment (localhost, custom domain, etc.)
+            const widgetSrc = `${window.location.origin}/widget.js?businessId=${encodeURIComponent(businessId)}`;
+            const embedHtmlCode = `<script src="${widgetSrc}"><\/script>`;
+            embedCodeSpan.textContent = embedHtmlCode;
+        });
+        
+        // Logout functionality (same as dashboard, uses dropdown logout button)
+        const logoutButton = document.getElementById('logoutBtn');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                try {
+                    await firebase.auth().signOut();
+                    window.location.href = '/login';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Error signing out. Please try again.');
+                }
+            });
+        }
+        
+        // Copy embed code to clipboard (with modern toast-like alert)
+        async function copyEmbedCode() {
+            const codeToCopy = embedCodeSpan.innerText;
+            if (!codeToCopy) {
+                alert('No embed code available. Make sure you are logged in.');
+                return;
+            }
+            try {
+                await navigator.clipboard.writeText(codeToCopy);
+                // Visual feedback on button
+                const originalContent = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fa-regular fa-check-circle"></i> <span>Copied!</span>';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalContent;
+                }, 2000);
+            } catch (err) {
+                console.error('Copy failed:', err);
+                alert('Could not copy. Manually select the code.');
+            }
+        }
+        
+        if (copyBtn) {
+            copyBtn.addEventListener('click', copyEmbedCode);
+        }
+        
+        // Optional: also allow clicking on the old copy method (legacy function but we keep global for any inline)
+        window.copyCode = function() {
+            const codeElem = document.getElementById('embedCode');
+            if (codeElem) {
+                navigator.clipboard.writeText(codeElem.innerText).then(() => {
+                    alert('Code copied to clipboard!');
+                }).catch(() => alert('Copy manually'));
+            }
+        };
+    </script>
+</body>
+</html>

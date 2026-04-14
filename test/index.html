@@ -1,0 +1,750 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vault & Hide | Premium Leather Bags</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FEFCF5;
+      color: #1F2A2E;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    /* reusable container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* header / navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      background: #FFFFFFEE;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+      z-index: 1000;
+      border-bottom: 1px solid #EFE5D8;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #2E4A3A;
+    }
+    .logo span {
+      font-weight: 400;
+      color: #B58B4C;
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2C3A2F;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #B58B4C;
+    }
+    .cart-icon {
+      position: relative;
+      font-size: 1.3rem;
+    }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #2E4A3A;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(97deg, #F3EFE7 0%, #FCF9F2 100%);
+      padding: 70px 0 80px;
+      border-bottom: 1px solid #EDE3D6;
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-content .badge {
+      background: #EADBCB;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #5C3E1F;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 {
+      font-size: 3.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #1E3329;
+      margin-bottom: 1.2rem;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #4A5B52;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #2E4A3A;
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.25s;
+      font-size: 1rem;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: #B58B4C;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px -10px rgba(0,0,0,0.2);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #2E4A3A;
+      color: #2E4A3A;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      background: #2E4A3A;
+      color: white;
+    }
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+    .hero-image img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 32px;
+      object-fit: cover;
+      box-shadow: 0 30px 35px -20px rgba(0,0,0,0.2);
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1E3329;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-sub {
+      color: #6A7C6F;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    /* product grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0 2rem;
+    }
+    .product-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+      border: 1px solid #F0E7DD;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+      border-color: #E2D4C8;
+    }
+    .product-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover .product-img {
+      transform: scale(1.02);
+    }
+    .product-info {
+      padding: 1.5rem;
+    }
+    .product-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .product-price {
+      color: #B58B4C;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+    .product-card .btn-add {
+      background: #F5EFE6;
+      border: none;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 50px;
+      font-weight: 600;
+      color: #2E4A3A;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .product-card .btn-add:hover {
+      background: #2E4A3A;
+      color: white;
+    }
+
+    /* about + values */
+    .about-section {
+      background: #F9F5EE;
+      padding: 70px 0;
+      margin-top: 40px;
+    }
+    .about-grid {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .about-text p {
+      color: #44554B;
+      margin-bottom: 1.2rem;
+    }
+    .about-img {
+      flex: 1;
+    }
+    .about-img img {
+      width: 100%;
+      border-radius: 32px;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+    }
+    .values {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .value-item {
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    /* contact */
+    .contact-section {
+      padding: 70px 0;
+    }
+    .contact-wrapper {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      background: white;
+      border-radius: 48px;
+      padding: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+      border: 1px solid #EFE4D9;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info i {
+      width: 40px;
+      color: #B58B4C;
+      font-size: 1.4rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-form {
+      flex: 1;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #E2D5C8;
+      border-radius: 60px;
+      font-family: inherit;
+      background: #FEFCF8;
+    }
+    textarea {
+      border-radius: 24px;
+      resize: vertical;
+    }
+    .contact-form button {
+      background: #2E4A3A;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* newsletter */
+    .newsletter {
+      background: #2E4A3A;
+      padding: 60px 0;
+      text-align: center;
+      color: white;
+    }
+    .newsletter h3 {
+      font-size: 1.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .news-form {
+      max-width: 500px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .news-form input {
+      flex: 1;
+      border: none;
+      border-radius: 80px;
+      background: #FEFCF5;
+    }
+    .news-form button {
+      background: #B58B4C;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* footer */
+    .footer {
+      background: #1F2A24;
+      color: #CFD8D1;
+      padding: 45px 0 30px;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer a {
+      color: #E2D5C0;
+      text-decoration: none;
+      margin-right: 1.5rem;
+    }
+    .social-icons i {
+      font-size: 1.4rem;
+      margin-right: 1rem;
+      transition: 0.2s;
+    }
+    .social-icons i:hover {
+      color: #B58B4C;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .navbar {
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 1.5rem 0;
+        gap: 1.2rem;
+        border-top: 1px solid #EFE5D8;
+        margin-top: 1rem;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .container {
+        padding: 0 24px;
+      }
+    }
+    @media (max-width: 650px) {
+      .hero-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .section-title {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <h1>VAULT & HIDE <span>— leather & canvas</span></h1>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#products">Bags</a>
+        <a href="#about">Story</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero section (home) -->
+  <section id="home">
+    <div class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="badge">Handcrafted since 2012</span>
+          <h1>Carry your legacy<br>with timeless bags</h1>
+          <p>Premium full-grain leather and sustainable canvas. Every stitch tells a story of craftsmanship and durability.</p>
+          <div class="btn-group">
+            <a href="#products" class="btn-primary">Explore collection <i class="fas fa-arrow-right"></i></a>
+            <a href="#about" class="btn-outline">Our craft</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1591561954557-26941169b1e5?w=600&h=550&fit=crop" alt="Hero premium leather bag">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" style="padding: 70px 0 50px;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Iconic silhouettes</h2>
+        <div class="section-sub">Masterfully designed for work, travel & everyday elegance</div>
+      </div>
+      <div class="products-grid" id="productGrid">
+        <!-- product cards injected via JS or static, but we generate both -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container about-grid">
+      <div class="about-text">
+        <h3>Where heritage meets modernity</h3>
+        <p>Founded by artisans who believe bags are more than accessories — they are daily companions. Each Vault & Hide piece is crafted with ethically sourced materials, vegetable-tanned leather, and reinforced stitching for a lifetime of journeys.</p>
+        <p>We collaborate with master craftsmen from Florence to Kyoto, blending old-world techniques with functional design.</p>
+        <div class="values">
+          <div class="value-item"><i class="fas fa-leaf"></i> Eco-tanned</div>
+          <div class="value-item"><i class="fas fa-hand-sparkles"></i> Hand-finished</div>
+          <div class="value-item"><i class="fas fa-infinity"></i> Lifetime care</div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1536152470836-b943b246224c?w=600&h=500&fit=crop" alt="Artisan crafting bag">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Connect with us</h2>
+        <div class="section-sub">Visit our atelier or drop a message — we reply within 24h</div>
+      </div>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <span>47 Crosby Street, New York, NY 10012</span></div>
+          <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span>+1 (212) 555 0972</span></div>
+          <div class="contact-detail"><i class="fas fa-envelope"></i> <span>hello@vaulthide.com</span></div>
+          <div class="contact-detail"><i class="fas fa-clock"></i> <span>Mon - Sat: 10AM – 7PM</span></div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group"><input type="text" placeholder="Your name" id="nameField" required></div>
+            <div class="form-group"><input type="email" placeholder="Email address" id="emailField" required></div>
+            <div class="form-group"><textarea rows="3" placeholder="Tell us about your bag journey..." id="msgField"></textarea></div>
+            <button type="submit">Send message <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <div class="newsletter">
+    <div class="container">
+      <h3>Join the inner circle</h3>
+      <p>Be the first to discover new drops, secret sales & leather care tips.</p>
+      <div class="news-form">
+        <input type="email" placeholder="Your email address" id="newsEmail">
+        <button id="newsBtn">Subscribe <i class="fas fa-long-arrow-alt-right"></i></button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <h3 style="color: #EADBCB;">VAULT & HIDE</h3>
+      <p style="margin-top: 12px;">Heirloom-quality bags for the modern voyager.</p>
+    </div>
+    <div>
+      <p><strong>Explore</strong></p>
+      <a href="#products">New arrivals</a><br>
+      <a href="#about">Journal</a><br>
+      <a href="#contact">Repairs</a>
+    </div>
+    <div>
+      <p><strong>Follow us</strong></p>
+      <div class="social-icons">
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-pinterest"></i>
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-x-twitter"></i>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="text-align: center; margin-top: 30px; font-size: 0.8rem; border-top: 1px solid #3B4D42; padding-top: 25px;">
+    <p>© 2025 Vault & Hide — All rights reserved. Crafted with integrity.</p>
+  </div>
+</footer>
+
+<script>
+  // Product data (6 bags)
+  const products = [
+    { id: 1, name: "The Portland Tote", price: "$189", image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?w=500&h=600&fit=crop", alt: "leather tote bag" },
+    { id: 2, name: "Oslo Backpack", price: "$229", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=600&fit=crop", alt: "rugged backpack" },
+    { id: 3, name: "SoHo Messenger", price: "$149", image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500&h=600&fit=crop", alt: "canvas messenger bag" },
+    { id: 4, name: "Mini Crossbody", price: "$99", image: "https://images.unsplash.com/photo-1591561954557-26941169b1e5?w=500&h=600&fit=crop", alt: "crossbody bag" },
+    { id: 5, name: "Alpine Duffle", price: "$279", image: "https://images.unsplash.com/photo-1526170371405-5ce478e9425b?w=500&h=600&fit=crop", alt: "weekender duffle" },
+    { id: 6, name: "Executive Brief", price: "$259", image: "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=500&h=600&fit=crop", alt: "laptop briefcase" }
+  ];
+
+  function renderProducts() {
+    const grid = document.getElementById('productGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    products.forEach(prod => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img class="product-img" src="${prod.image}" alt="${prod.alt}" loading="lazy">
+        <div class="product-info">
+          <div class="product-title">${prod.name}</div>
+          <div class="product-price">${prod.price}</div>
+          <button class="btn-add" data-id="${prod.id}" data-name="${prod.name}"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+    // attach event listeners after render
+    document.querySelectorAll('.btn-add').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const productName = btn.getAttribute('data-name') || "Bag";
+        alert(`✨ ${productName} added to your cart. Free shipping on orders $150+`);
+      });
+    });
+  }
+
+  // mobile hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+  // close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (navLinks.classList.contains('show')) navLinks.classList.remove('show');
+    });
+  });
+
+  // Contact form handler
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('nameField')?.value.trim();
+      const email = document.getElementById('emailField')?.value.trim();
+      if (!name || !email) {
+        alert("Please fill in name and email.");
+        return;
+      }
+      alert(`Thank you ${name}! Our team will get back to you within 24 hours.`);
+      contactForm.reset();
+    });
+  }
+
+  // Newsletter subscribe
+  const newsBtn = document.getElementById('newsBtn');
+  const newsEmail = document.getElementById('newsEmail');
+  if (newsBtn) {
+    newsBtn.addEventListener('click', () => {
+      const email = newsEmail.value.trim();
+      if (!email || !email.includes('@')) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+      alert(`🎉 Thanks for subscribing! Enjoy 10% off your first order.`);
+      newsEmail.value = '';
+    });
+  }
+
+  // active nav highlight on scroll (simple)
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollY = window.pageYOffset;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      const sectionHeight = section.offsetHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href');
+      if (href && href === `#${current}`) {
+        link.classList.add('active');
+      } else if (current === 'home' && href === '#home') {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // initial render
+  renderProducts();
+
+  // additional small cart icon feedback
+  const cartIcon = document.querySelector('.cart-icon');
+  if (cartIcon) {
+    cartIcon.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("Your cart is ready for timeless pieces. Continue shopping or proceed to checkout.");
+    });
+  }
+</script>
+<script src="https://needhelp-xi.vercel.app/widget.js?businessId=iUTxkPCKoCN28VmFMrxWwiLWWIZ2"></script>
+</body>
+</html>

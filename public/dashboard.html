@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard • AI Support Bot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body style="background: #f8f8f8;">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+                <span class="fs-3 me-2"></span>
+                Needhelp.AI
+            </a>
+            
+            <div class="d-flex align-items-center gap-3">
+                <span class="text-muted small d-none d-md-inline">Welcome back</span>
+                <div class="dropdown">
+                    <button class="btn btn-outline-dark dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span id="userEmail" class="d-none d-md-inline"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-end mb-5">
+            <div>
+                <h1 class="display-5 fw-bold text-black mb-1">Dashboard</h1>
+                <p class="text-muted lead">Manage your AI Support Bot in one place</p>
+            </div>
+            <a href="/signup" class="btn btn-dark px-4 py-2 d-flex align-items-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Train New Bot</span>
+            </a>
+        </div>
+
+        <div class="row g-4">
+            <!-- Knowledge Base -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-black text-white rounded-3 p-3">
+                                <i class="fa-solid fa-book fa-2x"></i>
+                            </div>
+                            <div class="ms-4">
+                                <h5 class="fw-semibold text-black mb-0">Knowledge Base</h5>
+                                <p class="text-muted mb-0">Train your AI with documents &amp; FAQs</p>
+                            </div>
+                        </div>
+                        <p class="text-muted">Upload PDFs, Notion pages, or URLs. Your bot learns instantly.</p>
+                        <a href="/knowledge" class="btn btn-dark w-100 mt-3 py-3">
+                            Manage Knowledge Base
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Tickets -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-black text-white rounded-3 p-3">
+                                <i class="fa-solid fa-ticket fa-2x"></i>
+                            </div>
+                            <div class="ms-4">
+                                <h5 class="fw-semibold text-black mb-0">Support Tickets</h5>
+                                <p class="text-muted mb-0">View customer conversations</p>
+                            </div>
+                        </div>
+                        <p class="text-muted">See what your AI answered and step in when needed.</p>
+                        <a href="/tickets" class="btn btn-dark w-100 mt-3 py-3">
+                            View All Tickets
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Embed Widget -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-black text-white rounded-3 p-3">
+                                <i class="fa-solid fa-code fa-2x"></i>
+                            </div>
+                            <div class="ms-4">
+                                <h5 class="fw-semibold text-black mb-0">Embed Widget</h5>
+                                <p class="text-muted mb-0">Add chat to your website</p>
+                            </div>
+                        </div>
+                        <p class="text-muted">Copy one line of code and add your AI bot anywhere.</p>
+                        <a href="/embed" class="btn btn-dark w-100 mt-3 py-3">
+                            Get Embed Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick status -->
+        <div class="mt-5 pt-4 border-top text-center text-muted small">
+            <i class="fa-solid fa-check-circle text-success me-1"></i>
+            Your AI bot is currently <strong class="text-black">FREE in Beta</strong> • 
+            Paid plans (₦10,000/mo or ₦100,000/yr) coming soon
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8QXAM2cEySKJuhVPobuEH7nzSX8xyULA",
+            authDomain: "observer-d8ad4.firebaseapp.com",
+            databaseURL: "https://observer-d8ad4-default-rtdb.firebaseio.com",
+            projectId: "observer-d8ad4",
+            storageBucket: "observer-d8ad4.firebasestorage.app",
+            messagingSenderId: "502571433434",
+            appId: "1:502571433434:web:313b0635ad9706e18ed4e3",
+            measurementId: "G-CXFDB13376"
+        };
+        firebase.initializeApp(firebaseConfig);
+        
+        firebase.auth().onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = '/login';
+            } else {
+                // Show user email in navbar
+                document.getElementById('userEmail').textContent = user.email;
+            }
+        });
+        
+        document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            await firebase.auth().signOut();
+            window.location.href = '/login';
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

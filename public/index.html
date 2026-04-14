@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Support Bot • Train Once, Help Forever</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+                <span class="fs-3 me-2"></span>
+               Needhelp.AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                  </ul>
+                <div class="d-flex gap-2">
+                    <a href="/login" class="btn btn-outline-dark px-4">Login</a>
+                    <a href="/signup" class="btn btn-dark px-4">Start Free</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="py-5" style="background: #f8f8f8;">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Left text -->
+                <div class="col-lg-6">
+                    <div class="badge bg-black text-white mb-3 px-3 py-2 rounded-pill">
+                        <i class="fa-solid fa-rocket me-1"></i> Currently FREE (Beta)
+                    </div>
+                    <h1 class="display-3 fw-bold lh-1 mb-3 text-black">
+                        Your AI Customer Support Bot.<br>
+                        Trained on your business.
+                    </h1>
+                    <p class="lead text-muted mb-4">
+                        Upload your docs, FAQs, and knowledge base once.<br>
+                        Get a smart, 24/7 chatbot that answers like your best support agent.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 align-items-center">
+                        <a href="/signup" class="btn btn-dark btn-lg px-5 py-3 rounded-3 shadow-sm">
+                            <i class="fa-solid fa-wand-magic-sparkles me-2"></i>
+                            Train Your Bot — FREE
+                        </a>
+                        <a href="#demo" class="btn btn-outline-dark btn-lg px-5 py-3 rounded-3 d-flex align-items-center">
+                            <i class="fa-solid fa-play-circle me-2"></i>
+                            Watch 47-second demo
+                        </a>
+                        <div class="text-muted small">
+                            No credit card required<br>
+                            14-day full access
+                        </div>
+                    </div>
+                    
+                    <!-- Pricing teaser -->
+                    <div class="mt-4 pt-3 border-top d-flex align-items-center gap-3">
+                        <span class="text-muted">Coming soon:</span>
+                        <span class="fw-semibold">₦10,000 / month</span>
+                        <span class="text-muted">or</span>
+                        <span class="fw-semibold">₦100,000 / year</span>
+                        <span class="badge bg-success text-white">Save ₦20,000 yearly</span>
+                    </div>
+                </div>
+                
+                <!-- Right side: Live chat mock -->
+                <div class="col-lg-6">
+                    <div class="card shadow border-0 overflow-hidden rounded-4" style="max-width: 380px; margin: 0 auto;">
+                        <div class="card-header bg-white d-flex align-items-center gap-2 py-3">
+                            <div class="rounded-circle bg-black" style="width: 12px; height: 12px;"></div>
+                            <span class="fw-semibold text-black">Acme Support • Online</span>
+                            <span class="ms-auto text-muted small">Powered by AI Support Bot</span>
+                        </div>
+                        <div class="card-body p-0" style="height: 380px; background: #f8f8f8;">
+                            <!-- Chat messages -->
+                            <div class="p-4 overflow-auto h-100" style="display: flex; flex-direction: column; gap: 12px;">
+                                <!-- Bot message -->
+                                <div class="d-flex gap-2">
+                                    <div class="bg-black text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px;">🤖</div>
+                                    <div class="bg-white rounded-3 px-3 py-2 shadow-sm border" style="max-width: 75%;">
+                                        Hi 👋 How can I help you today? I can answer questions about our pricing, shipping, or refunds.
+                                    </div>
+                                </div>
+                                
+                                <!-- User message -->
+                                <div class="d-flex justify-content-end">
+                                    <div class="bg-black text-white rounded-3 px-3 py-2 shadow-sm" style="max-width: 75%;">
+                                        What’s your return policy?
+                                    </div>
+                                </div>
+                                
+                                <!-- Bot message -->
+                                <div class="d-flex gap-2">
+                                    <div class="bg-black text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px;">🤖</div>
+                                    <div class="bg-white rounded-3 px-3 py-2 shadow-sm border" style="max-width: 75%;">
+                                        You can return any item within 30 days for a full refund. Just send us the order number.
+                                        <div class="text-muted mt-2 small">✅ Answered from your knowledge base</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white p-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded-3" placeholder="Type your message..." value="When will my order ship?">
+                                <button class="btn btn-dark rounded-3"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-black">Everything your support team needs.<br>Zero headaches.</h2>
+                <p class="lead text-muted col-lg-8 mx-auto">Train in minutes. Answer instantly. Scale effortlessly.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 border-0 shadow-sm">
+                        <div class="display-6 mb-3">📚</div>
+                        <h4 class="fw-semibold">Instant Knowledge Upload</h4>
+                        <p class="text-muted">Drop PDFs, Notion pages, Google Docs, or website URLs. Our AI reads and remembers everything.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 border-0 shadow-sm">
+                        <div class="display-6 mb-3">🧠</div>
+                        <h4 class="fw-semibold">Smart &amp; Contextual</h4>
+                        <p class="text-muted">Answers feel human. Handles follow-up questions, tone matching, and even suggests upsells.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 border-0 shadow-sm">
+                        <div class="display-6 mb-3">🔗</div>
+                        <h4 class="fw-semibold">One-Click Embed</h4>
+                        <p class="text-muted">Add a beautiful chat widget to your site, Shopify store, or mobile app in under 30 seconds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="py-5" style="background: #f8f8f8;">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <h2 class="display-5 fw-bold text-black">3 steps. 5 minutes. Done.</h2>
+                </div>
+            </div>
+            <div class="row g-5 text-center">
+                <div class="col-md-4">
+                    <div class="mx-auto mb-3 rounded-circle bg-black text-white d-flex align-items-center justify-content-center" style="width: 64px; height: 64px; font-size: 1.5rem;">1</div>
+                    <h5>Upload your knowledge</h5>
+                    <p class="text-muted">Connect your help center, docs, or simply drag &amp; drop files.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="mx-auto mb-3 rounded-circle bg-black text-white d-flex align-items-center justify-content-center" style="width: 64px; height: 64px; font-size: 1.5rem;">2</div>
+                    <h5>Customize personality</h5>
+                    <p class="text-muted">Choose tone, add your brand voice, and set fallback rules.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="mx-auto mb-3 rounded-circle bg-black text-white d-flex align-items-center justify-content-center" style="width: 64px; height: 64px; font-size: 1.5rem;">3</div>
+                    <h5>Embed &amp; go live</h5>
+                    <p class="text-muted">Copy one line of code. Your AI is now helping customers 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-black">Simple Pricing</h2>
+                <p class="lead text-muted">It is currently FREE during beta.<br>Paid subscription starts at ₦10,000 monthly or ₦100,000 yearly.</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Free / Beta -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-2 border-black rounded-4 shadow-sm">
+                        <div class="card-body p-5 text-center">
+                            <h5 class="fw-semibold text-black">FREE</h5>
+                            <h2 class="display-4 fw-bold text-black mb-1">₦0</h2>
+                            <p class="text-muted">Currently in Beta</p>
+                            <ul class="list-unstyled mt-4 mb-5 text-start">
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Full access to AI training</li>
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Embed on 1 website</li>
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Basic analytics</li>
+                                <li class="text-muted"><i class="fa-solid fa-check text-black me-2"></i>14 days full features</li>
+                            </ul>
+                            <a href="/signup" class="btn btn-outline-dark w-100 py-3">Start Free Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Monthly -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border rounded-4 shadow-sm position-relative">
+                        <div class="card-body p-5 text-center">
+                            <h5 class="fw-semibold text-black">MONTHLY</h5>
+                            <h2 class="display-4 fw-bold text-black mb-1">₦10,000</h2>
+                            <p class="text-muted">per month</p>
+                            <ul class="list-unstyled mt-4 mb-5 text-start">
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Everything in Free</li>
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Unlimited websites</li>
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Advanced analytics</li>
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Priority support</li>
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Multilingual replies</li>
+                            </ul>
+                            <a href="/signup" class="btn btn-dark w-100 py-3">Subscribe Monthly</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Yearly (Best value) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border rounded-4 shadow-sm position-relative">
+                        <div class="position-absolute top-0 start-50 translate-middle-x badge bg-black text-white px-4 py-1">BEST VALUE • SAVE ₦20,000</div>
+                        <div class="card-body p-5 text-center">
+                            <h5 class="fw-semibold text-black">YEARLY</h5>
+                            <h2 class="display-4 fw-bold text-black mb-1">₦100,000</h2>
+                            <p class="text-muted">billed yearly (₦8,333/mo)</p>
+                            <ul class="list-unstyled mt-4 mb-5 text-start">
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Everything in Monthly</li>
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>2 months free</li>
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Custom branding</li>
+                                <li class="mb-3"><i class="fa-solid fa-check text-black me-2"></i>Priority AI updates</li>
+                            </ul>
+                            <a href="/signup" class="btn btn-dark w-100 py-3">Subscribe Yearly</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <div class="bg-black text-white py-5 text-center">
+        <div class="container">
+            <h2 class="display-5 fw-bold mb-3">Ready to replace repetitive support tickets?</h2>
+            <p class="lead mb-4">Join thousands already using the FREE beta.<br>Paid plans at ₦10,000/mo or ₦100,000/yr coming soon.</p>
+            <a href="/signup" class="btn btn-light btn-lg px-5 py-3 rounded-3 shadow">Start Free Right Now</a>
+            <p class="small mt-3 opacity-75">No credit card • Cancel anytime</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white py-5 border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="fw-bold d-flex align-items-center mb-3">
+                        <span class="fs-3 me-2">🤖</span> AI Support Bot
+                    </div>
+                    <p class="text-muted small">Train smarter chatbots with your own data.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                   
+                </div>
+                <div class="col-6 col-lg-2">
+                    
+                </div>
+                <div class="col-12 col-lg-5 text-lg-end">
+                   
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
